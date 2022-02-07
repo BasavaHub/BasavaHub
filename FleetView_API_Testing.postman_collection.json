@@ -1,0 +1,2989 @@
+{
+	"info": {
+		"_postman_id": "0c609496-ef6d-4299-9a33-e6366382fc94",
+		"name": "FleetView_API_Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authorization- C123895",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123895 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.globals.set(\"auth_token\", jsonData.user.auth_token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "saikatadmin@foo.bar",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "aGVsbG93b3JsZDEyM0A=",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Base URL}}/v1/auth/login",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve All Points- C123917",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123917 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{Base URL}}/v1/points/",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"points",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creating New Point- C123918",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123918 Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"var jsonData = pm.response.json();",
+							"pm.globals.set(\"id\", jsonData.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"7ec286e2-baec-44ba-8b5f-ce5b0a8ce044\",\n  \"array_id\": \"ccb73b50-e08b-4783-b005-6e36e8db6983\",\n  \"name\": \"API automation point\",\n  \"order\": 1,\n  \"column\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/points/",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"points",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a Point- C123919",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123919 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{auth_token}}auth_token}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "saikatapitest@foo.bar",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "aGVsbG93b3JsZDEyMyM=",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/points/{{id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"points",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Point- C123920",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123920 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true,
+					"accept-encoding": true,
+					"connection": true,
+					"user-agent": true
+				},
+				"followAuthorizationHeader": false,
+				"followOriginalHttpMethod": false
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"7ec286e2-baec-44ba-8b5f-ce5b0a8ce044\",\n  \"array_id\": \"ccb73b50-e08b-4783-b005-6e36e8db6983\",\n  \"name\": \"API automation point updated\",\n  \"order\": 2,\n  \"column\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/points/{{id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"points",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Point- C123921",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123921 Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/points/{{id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"points",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieves the user profile- C123914",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123914 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/users/{{Profile_User}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{Profile_User}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieves es Arrays- C125856",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C125856 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/es_arrays/{{Remote_ArrayID}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"es_arrays",
+						"{{Remote_ArrayID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieves Nodes- C125855",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C125855 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/nodes/{{Remote_ArrayID}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"nodes",
+						"{{Remote_ArrayID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieves Cores- C125857",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C125857 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/cores/{{Remote_ArrayID}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"cores",
+						"{{Remote_ArrayID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieves Sources_Types- C125861",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C125861 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/sourcetypes/{{Remote_ArrayID}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"sourcetypes",
+						"{{Remote_ArrayID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieves Apps_Settings- C125859",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C125859 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/app_settings/{{Remote_ArrayID}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"app_settings",
+						"{{Remote_ArrayID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieves Node Groups- C125854",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C125854 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/nodegroups/{{Remote_ArrayID}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"nodegroups",
+						"{{Remote_ArrayID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieves MDU_Apps- C125858",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C125858 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/mdu_apps/{{Remote_ArrayID}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"mdu_apps",
+						"{{Remote_ArrayID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieves Point_Types- C125862",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C125862 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/pointtypes/{{Remote_ArrayID}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"pointtypes",
+						"{{Remote_ArrayID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieves Sources- C125860",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C125860 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/sources/{{Remote_ArrayID}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"sources",
+						"{{Remote_ArrayID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieves Source_Maps- C125863",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C125863 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/sourcemaps/{{Remote_ArrayID}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"sourcemaps",
+						"{{Remote_ArrayID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retreive All Locations- C124359",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124359 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/locations",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crete New Location- C124358",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124358 Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"const responseJson = pm.response.json();\r",
+							"pm.globals.set(\"Location_id\", responseJson.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"7222281c-f5aa-4c62-a3ce-11bc927252d5\",\r\n    \"name\": \"Test Location\",\r\n    \"latitude\": 29.759636,\r\n    \"longitude\": 95.365535\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base URL}}/v1/locations",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"locations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retreive A Location- C124360",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124360 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const responseJson = pm.response.json();\r",
+							"pm.globals.set(\"Location_id\", responseJson.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/locations/{{Location_id}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"locations",
+						"{{Location_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update the Location- C124361",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124361 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const responseJson = pm.response.json();\r",
+							"pm.globals.set(\"Location_id\", responseJson.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"8302222c-f5aa-4c67-a3ce-11bc927251d4\",\r\n    \"name\": \"Test Location Updated\",\r\n    \"latitude\": \"29.759636\",\r\n    \"longitude\": \"95.365535\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base URL}}/v1/locations/{{Location_id}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"locations",
+						"{{Location_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Location- C124362",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124362 Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/locations/{{Location_id}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"locations",
+						"{{Location_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve All Roles- C124373",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124373 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/roles",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creating Role- C124374",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124374 Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"const responseJson = pm.response.json();\r",
+							"pm.globals.set(\"Role_id\", responseJson.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"3fa85f64-5717-4563-b3fc-2c963f66afa7\",\r\n    \"name\": \"Test Roleee7\",\r\n    \"privileges_level\": 0,\r\n    \"order\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base URL}}/v1/roles",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retreive A Role- C124375",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124375 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const responseJson = pm.response.json();\r",
+							"pm.globals.set(\"Role_id\", responseJson.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/roles/{{Role_id}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"roles",
+						"{{Role_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update A Role- C124376",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124376 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const responseJson = pm.response.json();\r",
+							"pm.globals.set(\"Role_id\", responseJson.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"4fa85f64-5717-4562-b3fc-2c963f66afa8\",\r\n    \"name\": \"roleeee14 updtaed\",\r\n    \"order\": 0,\r\n    \"privileges_level\": 5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base URL}}/v1/roles/{{Role_id}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"roles",
+						"{{Role_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete A Role- C124377",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124377 Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/roles/{{Role_id}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"roles",
+						"{{Role_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all App Settings- C123897",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123897 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/system_settings",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"system_settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve an App Setting- C123898",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123898 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/system_settings/ca9d00a5-22e1-4218-a50d-b247bd6742a4",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"system_settings",
+						"ca9d00a5-22e1-4218-a50d-b247bd6742a4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all Companies- C124393",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124393 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/companies",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve All Users- C123909",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.globals.set(\"Base URL\", \"https://fleet-view-qa.fluenceenergy.com:7443\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123909 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonObject = xml2Json(responseBody);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/users",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creating New Users- C123910",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123910 Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"const responseJson = pm.response.json();\r",
+							"pm.globals.set(\"User_id\", responseJson.id)\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"6533413b-063c-4e6a-a749-46a5d9423f12\",\r\n    \"name\": \"RajAutomationUser8\",\r\n    \"email\": \"RajAutomationUser23@fluenceenergy.com\",\r\n    \"password\": \"RajAutomationUser8@123456789999992345678999999\",\r\n    \"password_confirmation\":\"RajAutomationUser8@123456789999992345678999999\",\r\n    \"expiry_date\": 30,\r\n    \"role_id\": \"1bbb47cf-9d04-45e1-bfcd-b9e96e0575d2\",\r\n    \"lock\": false,\r\n    \"group_id\": \"568062a5-d729-4343-92d5-2aa8c8f2a1e9\",\r\n    \"array_ids\": [\r\n        \"232abd2a-9332-4749-b96c-201e78101b5d\"\r\n    ],\r\n    \"session_expires_at\": \"2021-06-11T14:14:21.361Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base URL}}/v1/users",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retreive A User- C123911",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123911 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const responseJson = pm.response.json();\r",
+							"pm.globals.set(\"User_id\", responseJson.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/users/{{User_id}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{User_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User- C123912",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123912 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"const responseJson = pm.response.json();\r",
+							"pm.globals.set(\"User_id\", responseJson.id)\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"13d55c47-0f82-4748-b2df-5bf200a1396f\",\r\n    \"name\": \"RajAutomationUser24Update\",\r\n    \"email\": \"RajAutomationUser24@fluenceenergy.com\",\r\n    \"expiry_date\": 30,\r\n    \"role_id\": \"1bbb47cf-9d04-45e1-bfcd-b9e96e0575d2\",\r\n    \"lock\": false,\r\n    \"group_id\": \"568062a5-d729-4343-92d5-2aa8c8f2a1e9\",\r\n    \"array_ids\": [\r\n        \"232abd2a-9332-4749-b96c-201e78101b5d\"\r\n    ],\r\n    \"session_expires_at\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base URL}}/v1/users/{{User_id}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{User_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Password- C123916",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123916 Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\": {\r\n        \"password\": \"UGFzc3dvcmRVcGRhdGVkQDEyMzQ1\",\r\n        \"password_confirmation\": \"UGFzc3dvcmRVcGRhdGVkQDEyMzQ1\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base URL}}/v1/users/{{User_id}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{User_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete A User- C123913",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123913 Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{Base URL}}/v1/users/{{User_id}}",
+					"host": [
+						"{{Base URL}}"
+					],
+					"path": [
+						"v1",
+						"users",
+						"{{User_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Company- C124394",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124394 Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"var jsonData = pm.response.json();",
+							"pm.globals.set(\"company_id\", jsonData.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"e4bcf2f1-b422-4a8d-8829-931167025367\",\n  \"name\": \"API Test Company\",\n  \"array_ids\": [\n        \"232abd2a-9332-4749-b96c-201e78101b5d\"\n  ],\n  \"arrays\": [\n    {\n      \"id\": \"7302881c-f5aa-4c67-a3ce-72bc927251d2\",\n      \"company_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"name\": \"API Array\",\n      \"url_cable\": \"wss://advancion-qa-fos.fluenceenergy.com/cable\",\n      \"url_plant\": \"https://advancion-qa-fos.fluenceenergy.com/api/v1\",\n      \"plant_user\": \"93qaserviceconnector@fluenceenergy.com\",\n      \"plant_password\": \"TWFuYWdlckBobWk0MjIwIQ==\",\n      \"location_id\": \"95751bd6-e75a-4e7f-953e-a0af377e2391\",\n      \"location\": {\n            \"id\": \"95751bd6-e75a-4e7f-953e-a0af377e2391\",\n            \"name\": \"Sevilla\",\n            \"latitude\": \"37.38863\",\n            \"longitude\": \"-5.99534\"\n      },\n      \"point_ids\": [\n        \"1913cfd0-0aeb-4773-b2e7-becfd950e085\"\n      ]\n    }\n  ],\n  \"account_ids\": [\n    \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/companies",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a Company- C124395",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124395 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/companies/{{company_id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"companies",
+						"{{company_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Company- C124396",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124396 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"e4bcf2f1-b422-4a8d-8829-931167025367\",\n  \"name\": \"API Test Company Edited\",\n  \"array_ids\": [\n        \"232abd2a-9332-4749-b96c-201e78101b5d\"\n  ],\n  \"arrays\": [\n    {\n      \"id\": \"7302881c-f5aa-4c67-a3ce-72bc927251d2\",\n      \"company_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n      \"name\": \"API Array\",\n      \"url_cable\": \"wss://advancion-qa-fos.fluenceenergy.com/cable\",\n      \"url_plant\": \"https://advancion-qa-fos.fluenceenergy.com/api/v1\",\n      \"plant_user\": \"93qaserviceconnector@fluenceenergy.com\",\n      \"plant_password\": \"TWFuYWdlckBobWk0MjIwIQ==\",\n      \"location_id\": \"95751bd6-e75a-4e7f-953e-a0af377e2391\",\n      \"location\": {\n            \"id\": \"95751bd6-e75a-4e7f-953e-a0af377e2391\",\n            \"name\": \"Sevilla\",\n            \"latitude\": \"37.38863\",\n            \"longitude\": \"-5.99534\"\n      },\n      \"point_ids\": [\n        \"1913cfd0-0aeb-4773-b2e7-becfd950e085\"\n      ]\n    }\n  ],\n  \"account_ids\": [\n    \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/companies/{{company_id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"companies",
+						"{{company_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Company- C124397",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124397 Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/companies/{{company_id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"companies",
+						"{{company_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve All Arrays- C123900",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123900 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/arrays",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"arrays"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Array- C123902",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123902 Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"var jsonData = pm.response.json();",
+							"pm.globals.set(\"array_id\", jsonData.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"\",\n  \"company_id\": \"\",\n  \"name\": \"Array Automation\",\n  \"url_cable\": \"wss://advancion-qa-fos.fluenceenergy.com/cable\",\n  \"url_plant\": \"https://advancion-qa-fos.fluenceenergy.com/api/v1\",\n  \"plant_user\": \"apiserviceconnector@foo.bar\",\n  \"plant_password\": \"aGVsbG93b3JsZDEyMyM=\",\n  \"location_id\": \"b1848300-0694-4517-a33a-ad04aa902b2b\",\n  \"location\": {\n    \"id\": \"b1848300-0694-4517-a33a-ad04aa902b2b\",\n    \"name\": \"Sevilla\",\n    \"latitude\": 30.1,\n    \"longitude\": 100.1\n  },\n  \"point_ids\": [\n    \"\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/arrays",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"arrays"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a Array- C123901",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123901 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/arrays/{{array_id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"arrays",
+						"{{array_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Array- C123903",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123903 Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"\",\n  \"company_id\": \"\",\n  \"name\": \"Array Automation updated\",\n  \"url_cable\": \"wss://advancion-ta-fos.fluenceenergy.com/cable\",\n  \"url_plant\": \"https://advancion-ta-fos.fluenceenergy.com/api/v1\",\n  \"plant_user\": \"testhuston@foo.bar\",\n  \"plant_password\": \"aGVsbG93b3JsZDEyM0A=\",\n  \"location_id\": \"b1848300-0694-4517-a33a-ad04aa902b2b\",\n  \"location\": {\n    \"id\": \"b1848300-0694-4517-a33a-ad04aa902b2b\",\n    \"name\": \"India\",\n    \"latitude\": 12.971599,\n    \"longitude\": 77.594566\n  },\n  \"point_ids\": [\n    \"\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/arrays/{{array_id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"arrays",
+						"{{array_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Array- C123904",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123904 Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/arrays/{{array_id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"arrays",
+						"{{array_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all Syetem Setting- C124388",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124388 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/system_settings/",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"system_settings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create System Setting- C124389",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124389 Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"pm.globals.set(\"system_id\", jsonData.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": \"af260296-16d9-4d42-806e-39b0f97ec874\",\n        \"setting_key\": \"point_column_maximum\",\n        \"setting_value\": \"7\",\n        \"description\": \"maximum value\"\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/system_settings/",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"system_settings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update System Setting- C124391",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124391 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const responseJson = pm.response.json();",
+							"pm.globals.set(\"system_id\", responseJson.id)",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"af260296-16d9-4d42-806e-39b0f97ec879\",\n    \"setting_key\": \"point_column_maximum_edited\",\n    \"setting_value\": \"8\",\n    \"description\": \"maximum value edited\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/system_settings/{{system_id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"system_settings",
+						"{{system_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete System Setting- C124392",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124392 Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/system_settings/{{system_id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"system_settings",
+						"{{system_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all Interface Setting- C183841",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C183841 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/configuration_settings/",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"configuration_settings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Interface Setting- C183842",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C183842 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"configuration_settings\": [\n    {\n      \"id\": \"4d4bf54c-e183-4cee-ad60-03b6bbf6bd0b\",\n      \"value\": \"11\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/configuration_settings/",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"configuration_settings",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update App Settings- C123899",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C123899 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"ca9d00a5-22e1-4218-a50d-b247bd6742a4\",\n    \"setting_key\": \"point_column_minimum\",\n    \"setting_value\": \"1\",\n    \"description\": \"minimum value for point column updated\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/system_settings/ca9d00a5-22e1-4218-a50d-b247bd6742a4",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"system_settings",
+						"ca9d00a5-22e1-4218-a50d-b247bd6742a4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all Groups- C124378",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124378 Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/groups/",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"groups",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creating New Group- C124379",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.globals.set(\"group_id\", jsonData.id)\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"82ba01cf-5fec-407c-af2f-d690644042d8\",\n    \"name\": \"DV Group\",\n    \"account_ids\": [\n        \"03b6fa76-6c0f-41f4-aee1-60de35e80835\"\n    ],\n    \"accounts\": [\n        {\n            \"id\": \"03b6fa76-6c0f-41f4-aee1-60de35e80835\",\n            \"name\": \"DV Array\",\n            \"company_ids\": [\n                \"22401a57-883e-4da0-a67f-7baa8e96d85b\"\n            ],\n            \"companies\": [\n                {\n                    \"id\": \"22401a57-883e-4da0-a67f-7baa8e96d85b\",\n                    \"name\": \"DV Array\",\n                    \"array_ids\": [\n                        \"ccb73b50-e08b-4783-b005-6e36e8db6983\"\n                    ],\n                    \"account_ids\": [\n                        \"03b6fa76-6c0f-41f4-aee1-60de35e80835\"\n                    ],\n                    \"arrays\": [\n                        {\n                            \"id\": \"ccb73b50-e08b-4783-b005-6e36e8db6983\",\n                            \"name\": \"DV Array\",\n                            \"location_id\": \"b1848300-0694-4517-a33a-ad04aa902b2b\",\n                            \"url_cable\": \"wss://advancion-dv-fos.fluenceenergy.com/cable\",\n                            \"url_plant\": \"https://advancion-dv-fos.fluenceenergy.com/api/v1\",\n                            \"plant_user\": \"serviceconnector@foo.bar\",\n                            \"plant_password\": \"TWFuYWdlckBobWk0MjIwIQ==\",\n                            \"created_at\": \"2020-05-19T10:24:29.185Z\",\n                            \"updated_at\": \"2022-02-07T08:03:55.537Z\",\n                            \"enabled\": true\n                        }\n                    ]\n                }\n            ]\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/groups/",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"groups",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a Group- C124380",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.globals.set(\"group_id\", jsonData.id)\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/groups/{{group_id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"groups",
+						"{{group_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Group- C124381",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.globals.set(\"group_id\", jsonData.id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"f9d42d85-148f-41aa-a353-83329c805c1d\",\r\n    \"name\": \"DV Group Update\",\r\n    \"account_ids\": [\r\n        \"03b6fa76-6c0f-41f4-aee1-60de35e80835\"\r\n    ],\r\n    \"accounts\": [\r\n        {\r\n            \"id\": \"03b6fa76-6c0f-41f4-aee1-60de35e80835\",\r\n            \"name\": \"DV Array Update\",\r\n            \"company_ids\": [\r\n                \"22401a57-883e-4da0-a67f-7baa8e96d85b\"\r\n            ],\r\n            \"companies\": [\r\n                {\r\n                    \"id\": \"22401a57-883e-4da0-a67f-7baa8e96d85b\",\r\n                    \"name\": \"DV Array Update\",\r\n                    \"array_ids\": [\r\n                        \"ccb73b50-e08b-4783-b005-6e36e8db6983\"\r\n                    ],\r\n                    \"account_ids\": [\r\n                        \"03b6fa76-6c0f-41f4-aee1-60de35e80835\"\r\n                    ],\r\n                    \"arrays\": [\r\n                        {\r\n                            \"id\": \"ccb73b50-e08b-4783-b005-6e36e8db6983\",\r\n                            \"name\": \"DV Array Update\",\r\n                            \"location_id\": \"b1848300-0694-4517-a33a-ad04aa902b2b\",\r\n                            \"url_cable\": \"wss://advancion-dv-fos.fluenceenergy.com/cable\",\r\n                            \"url_plant\": \"https://advancion-dv-fos.fluenceenergy.com/api/v1\",\r\n                            \"plant_user\": \"serviceconnector@foo.bar\",\r\n                            \"plant_password\": \"TWFuYWdlckBobWk0MjIwIQ==\",\r\n                            \"created_at\": \"2020-05-19T10:24:29.185Z\",\r\n                            \"updated_at\": \"2022-02-07T08:03:55.537Z\",\r\n                            \"enabled\": true\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/groups/{{group_id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"groups",
+						"{{group_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Group- C124382",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"C124382 Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/groups/{{group_id}}",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"groups",
+						"{{group_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve NodeGroups- C125854",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fleet-view-qa.fluenceenergy.com:7443/v1/nodegroups/33c3e0b6-bc7c-4750-85d0-2e4e454c4a0c",
+					"protocol": "https",
+					"host": [
+						"fleet-view-qa",
+						"fluenceenergy",
+						"com"
+					],
+					"port": "7443",
+					"path": [
+						"v1",
+						"nodegroups",
+						"33c3e0b6-bc7c-4750-85d0-2e4e454c4a0c"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{auth_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
